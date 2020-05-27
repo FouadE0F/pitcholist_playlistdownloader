@@ -8,18 +8,19 @@ from bs4 import BeautifulSoup
 
 
 
+Print("------Hi User in Download vidéos from YouTube------")
+Print("-For Download vidéo type : V \n-For Download à playlist type L")
+isVidorPlay = input('=> Your choise : ')
 
-isVidorPlay = input('do you to download a video or playlist (video / playlist): ')
 
-
-if isVidorPlay.lower() == 'video':
+if (isVidorPlay.lower() == 'v' or isVidorPlay.lower() =='V') :
     video = input('Enter the video URL: ')
     yt = YouTube(video, on_progress_callback= on_progress)
     os.mkdir(yt.title)
     yt.streams[0].download(yt.title, filename=yt.title)
-    x = input('press ENTER to exit...')
+    x = input('Press ENTER to exit...')
 
-elif isVidorPlay.lower() == 'playlist':
+elif (isVidorPlay.lower() == 'l' or isVidorPlay.lower()=='L') :
     count = 1
     playlist_input = input('Enter the playlist URL: ')
     playlist = Playlist(playlist_input)
@@ -38,12 +39,13 @@ elif isVidorPlay.lower() == 'playlist':
         count += 1
     local = os.getcwdb()
     print('Downloading done. You will find the playlist in "'+ str(local) +'"')
-    x = input('press ENTER to exit...')
+    x = input('Press ENTER to exit...')
 
 
 
 '''
-playlist = Playlist('https://www.youtube.com/playlist?list=PLFKON3XmVv1C8DDfYITN7wW3Jn3C3lNtK')
+
+playlist = Playlist('https://www.youtube.com/playlist?list=PL6L4eAIx5ngAAP8BM97i1xcBKzTUyu7WK')
 count = 0
 #location = input('enter location: ')
 for vid in playlist:
